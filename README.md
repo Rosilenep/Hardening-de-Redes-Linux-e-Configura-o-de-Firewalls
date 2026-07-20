@@ -6,26 +6,41 @@ Objetivo: Configurar uma política defensiva estrita para impedir acessos não a
 
 
          Tarefas
-    1. Foi executado o comando "sudo ufw status" para verificar o estado atual do UFW
+    1. Verificar o estado atual do UFW
+  Foi executado o comando "sudo ufw status" para verificar o estado atual do UFW
+
 <img width="316" height="208" alt="image" src="https://github.com/user-attachments/assets/51c1c558-6950-454b-b965-40e1588185d5" />
 
-    2. Foi executado o comando "sudo ufw default deny incoming" para bloquear as ligações de entrada e o comando "sudo ufw default allow outgoing" para permitir as ligações de saída.
+    2. Alterar as políticas padrão — bloquear entrada, permitir saída
+  Foi executado o comando "sudo ufw default deny incoming" para bloquear as ligações de entrada e o comando "sudo ufw default allow outgoing" para permitir as ligações de saída.
+ 
   <img width="327" height="196" alt="image" src="https://github.com/user-attachments/assets/5394ed56-e813-4fef-abd2-a2e7286c70e2" />
    
   <img width="535" height="203" alt="image" src="https://github.com/user-attachments/assets/f07b3236-6a5c-4929-ad31-691e9a5b2fb8" />
 
-    3. Foi executado o comando "sudo ufw allow 22/tcp" para criar uma regra específica para permitir acesso SSH apenas na porta padrão
+    3. Criar uma regra específica para permitir acesso SSH apenas na porta padrão
+Foi executado o comando "sudo ufw allow 22/tcp" para criar uma regra específica para permitir acesso SSH apenas na porta padrão
 <img width="547" height="260" alt="image" src="https://github.com/user-attachments/assets/f31a51cc-fcb6-4fc9-a0df-9bb0bf49cf2b" />
 
-    4. Foi executado o comando "udo iptables -A INPUT -s 203.0.113.50 -j DROP" para simular o bloqueio de um IP malicioso fictício na chain INPUT do iptables
+    4. Simular o bloqueio de um IP malicioso fictício na chain INPUT do iptables
+Foi executado o comando "udo iptables -A INPUT -s 203.0.113.50 -j DROP" para simular o bloqueio de um IP malicioso fictício na chain INPUT do iptables. Portanto, no iptables foi adicionada uma regra para bloquear o endereço IP fictício 203.0.113.50, simulando o bloqueio de um endereço considerado malicioso.
+
 <img width="539" height="275" alt="image" src="https://github.com/user-attachments/assets/ec3e5def-5023-447a-8def-29438e116bd0" />
 
-    5. Foi executado o camando "sudo iptables-save | sudo tee /etc/iptables/rules.v4" para guardar o estado persistente do iptables
+    5. Guardar o estado persistente do iptables
+Foi executado o comando "sudo iptables-save | sudo tee /etc/iptables/rules.v4" para guardar o estado persistente do iptables
 
 <img width="551" height="427" alt="image" src="https://github.com/user-attachments/assets/a2518143-59c8-4393-b257-b9ec6e087e93" />
 
 
-Foi definida a política padrão do UFW para bloquear todas as ligações de entrada (deny incoming) e permitir todas as ligações de saída (allow outgoing). Também foi criada uma regra para permitir ligações SSH através da porta TCP 22.
+     Verificação das regras UFW ativas utilizando o comando "sudo ufw status verbose" e a Listagem completa das regras iptables  utilizando o comando "sudo iptables -L -v v"
+<img width="630" height="281" alt="image" src="https://github.com/user-attachments/assets/27468b1f-252b-437f-8903-44fe56c03482" />
 
-No iptables foi adicionada uma regra para bloquear o endereço IP fictício 203.0.113.50, simulando o bloqueio de um endereço considerado malicioso.
+
+
+
+
+
+
+
 
